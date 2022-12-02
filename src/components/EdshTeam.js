@@ -5,7 +5,7 @@ function EdshTeam() {
     <>
     <div className="h-fit w-full">
         <div className='bg-[url("/src/assets/bg-edsh.png")]'></div>
-        <div className="h-full w-[100vw] bg-[#F2F6FF] flex flex-col">
+            <div className="h-full w-[100vw] bg-[#F2F6FF] flex flex-col">
             <div className="w-full flex flex-col p-44 justify-center">
                 <div className="flex flex-row">
                     <h1 className="font-thin mr-3">More than</h1>
@@ -49,7 +49,9 @@ function EdshTeam() {
                     </div> 
                 </div>
             </div>
+            <img src="{{asset(/src/assets/bg-edsh.png)}}" alt=""></img>
         </div>
+        
     </div>
     </>
     )
