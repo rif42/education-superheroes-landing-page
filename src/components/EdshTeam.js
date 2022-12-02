@@ -49,9 +49,7 @@ function EdshTeam() {
                     </div> 
                 </div>
             </div>
-            <img src="{{asset(/src/assets/bg-edsh.png)}}" alt=""></img>
         </div>
-        
     </div>
     </>
     )
