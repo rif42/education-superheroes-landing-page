@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
     return (
-        <div className='w-full h-[20vw] bg-[#DCE2F0] flex flex-row justify-evenly align-middle'>
+        <div className=' h-[20vw] bg-[#DCE2F0] flex flex-row justify-evenly align-middle'>
             <div className='grow flex flex-col justify-center align-middle w-[33%]'>
                 <img
                     className='w-[12vw] place-self-center'

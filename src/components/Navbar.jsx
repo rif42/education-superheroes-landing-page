@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
     return (
@@ -7,15 +8,15 @@ function Navbar() {
                 <a className='flex flex-col justify-center align-middle pr-[7vw]'>
                     <img className='w-[10vw]' src={"/src/assets/ES_logo.png"} alt={"logo education superheroes"} />
                 </a>
-                <a className='flex flex-col justify-center align-middle text-white text-[1.2vw]'>
+                <Link to={"/"} className='flex flex-col justify-center align-middle text-white text-[1.2vw]'>
                     <div>Home</div>
-                </a>
-                <a className='flex flex-col justify-center align-middle text-white text-[1.2vw]'>
+                </Link>
+                <Link to={"/training"} className='flex flex-col justify-center align-middle text-white text-[1.2vw]'>
                     <div>Teacher's Training Program</div>
-                </a>
-                <a className='flex flex-col justify-center align-middle text-white text-[1.2vw]'>
+                </Link>
+                <Link to={"/our_team"} className='flex flex-col justify-center align-middle text-white text-[1.2vw]'>
                     <div>Our Team</div>
-                </a>
+                </Link>
                 <a className='flex flex-col justify-center align-middle text-white pl-[5vw] text-[1.2vw]'>
                     <div className='w-[12vw] bg-red-400 h-[3vw] rounded-full text-center flex flex-col justify-center'>
                         Contact Us

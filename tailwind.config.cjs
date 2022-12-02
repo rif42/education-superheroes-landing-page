@@ -13,6 +13,7 @@ module.exports = {
                 home0: "url('/src/assets/bg-home-0.jpg')",
                 home1: "url('/src/assets/bg-home-1.jpg')",
                 home2: "url('/src/assets/bg-home-2.jpg')",
+                team0: "url('/src/assets/bg-team-0.jpg')",
             },
         },
     },
