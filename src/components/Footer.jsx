@@ -6,7 +6,7 @@ function Footer() {
             <div className='grow flex flex-col justify-center align-middle w-[33%]'>
                 <img
                     className='w-[12vw] place-self-center'
-                    src={"/src/assets/ES_logo_black.png"}
+                    src={"/assets/ES_logo_black.png"}
                     alt={"logo education superheroes"}
                 />
                 <p className='text-[1vw] text-[#6A6D9E] place-self-center pt-[1vw] w-[15vw]'>

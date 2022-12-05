@@ -6,7 +6,7 @@ function Navbar() {
         <div className='w-full absolute h-[8vw]'>
             <div className='h-full flex flex-row justify-evenly align-middle px-[5vw] '>
                 <a className='flex flex-col justify-center align-middle pr-[7vw]'>
-                    <img className='w-[10vw]' src={"/src/assets/ES_logo.png"} alt={"logo education superheroes"} />
+                    <img className='w-[10vw]' src={"/assets/ES_logo.png"} alt={"logo education superheroes"} />
                 </a>
                 <Link to={"/"} className='flex flex-col justify-center align-middle text-white text-[1.2vw]'>
                     <div>Home</div>

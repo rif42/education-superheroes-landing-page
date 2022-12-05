@@ -51,7 +51,7 @@ function TeamCards({ img, title, role, text }) {
         <div className="h-[58vw] mx-[1.5vw] mt-[3vw] w-[40vw] flex flex-col">
           <img
             className="w-[40vw]"
-            src={`/src/assets/${img}.jpg`}
+            src={`/assets/${img}.jpg`}
             alt={`portrait of ${img}`}
           />
           <h2 className="text-left pt-[2vw] font-bold text-[#554DDE] text-[2vw]">
