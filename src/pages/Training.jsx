@@ -46,7 +46,7 @@ function Training() {
         <div className="w-[50%] flex flex-col justify-center align-middle">
           <img
             className="ml-[5vw] w-[35vw]"
-            src={"/src/assets/pic-training-0.jpg"}
+            src={"/assets/pic-training-0.jpg"}
             alt={"campus coaching with ira and dave"}
           />
         </div>
@@ -169,7 +169,7 @@ function Training() {
         <div className="w-[50%] flex flex-col justify-center align-middle">
           <img
             className="ml-[5vw] w-[35vw]"
-            src={"/src/assets/pic-training-1.jpg"}
+            src={"/assets/pic-training-1.jpg"}
             alt={"campus coaching with gabe, marc and nasser"}
           />
         </div>
@@ -185,7 +185,7 @@ function TrainingCard({ img, title, text }) {
     <div className="h-fit w-[25vw] px-[2vw] mx-[1vw] my-[1vw] flex flex-col place-items-center">
       <img
         className="w-[12vw]"
-        src={`/src/assets/${img}.png`}
+        src={`/assets/${img}.png`}
         alt={`${img}`}
       />
       <h2 className="text-center font-poppins font-bold text-[#554DDE] text-[2vw]">

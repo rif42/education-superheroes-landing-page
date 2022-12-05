@@ -35,7 +35,7 @@ function Home() {
         <div className="w-[50%] h-full flex flex-col justify-center align-middle text-center">
           <img
             className="ml-[5vw] w-[45vw]"
-            src={"/src/assets/pic-home-0.png"}
+            src={"/assets/pic-home-0.png"}
             alt={"picture of ira and dave near a lake"}
           />
         </div>
@@ -45,7 +45,7 @@ function Home() {
         <div className="w-[50%] h-full flex flex-col justify-center align-middle text-center">
           <img
             className="ml-[12vw] w-[30vw]"
-            src={"/src/assets/pic-home-1.jpg"}
+            src={"/assets/pic-home-1.jpg"}
             alt={"picture of ira"}
           />
         </div>
@@ -74,7 +74,7 @@ function Home() {
         <div className="w-[50%] h-full flex flex-col justify-center align-middle ">
           <img
             className="mr-[12vw] w-[30vw]"
-            src={"/src/assets/pic-home-2.jpg"}
+            src={"/assets/pic-home-2.jpg"}
             alt={"scorecampus and letsflip assisting learners"}
           />
         </div>
@@ -84,7 +84,7 @@ function Home() {
         <div className="w-[50%] h-full flex flex-col justify-center align-middle text-center">
           <img
             className="ml-[12vw] w-[30vw]"
-            src={"/src/assets/pic-home-3.jpg"}
+            src={"/assets/pic-home-3.jpg"}
             alt={"campus coaching with gabe ira and dave"}
           />
         </div>
