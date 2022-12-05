@@ -7,6 +7,7 @@ module.exports = {
     theme: {
         fontFamily: {
             roboto: ["Roboto", "sans-serif", defaultTheme.fontFamily.roboto],
+            poppins: ["Poppins", "sans-serif"],
         },
         extend: {
             backgroundImage: {

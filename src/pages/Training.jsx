@@ -178,8 +178,8 @@ function Training() {
       <Footer />
     </>
   );
-}
-// F2F6FF
+} 
+
 function TrainingCard({ img, title, text }) {
   return (
     <div className="h-fit w-[25vw] px-[2vw] mx-[1vw] my-[1vw] flex flex-col place-items-center">
@@ -188,10 +188,10 @@ function TrainingCard({ img, title, text }) {
         src={`/src/assets/${img}.png`}
         alt={`${img}`}
       />
-      <h2 className="text-center font-bold text-[#554DDE] text-[2vw]">
+      <h2 className="text-center font-poppins font-bold text-[#554DDE] text-[2vw]">
         {title}
       </h2>
-      <p className="text-[1.5vw] pt-[1vw] leading-relaxed text-[#6A6D9E] text-center">
+      <p className="text-[1.5vw] font-poppins pt-[1vw] leading-relaxed text-[#6A6D9E] text-center">
         {text}
       </p>
     </div>
