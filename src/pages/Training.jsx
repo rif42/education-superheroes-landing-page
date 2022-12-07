@@ -1,6 +1,9 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Form from "../components/Form";
+import { Outlet, Link } from "react-router-dom";
+
 
 function Training() {
   return (
@@ -10,7 +13,11 @@ function Training() {
         <p className="px-[15vw] text-center font-bold text-white text-[6vw] place-self-center">
           Education Superheroes Coaching Experience
         </p>
+        <p className="text-[5vw]">
+        </p>
       </div>
+
+      <Outlet/>
 
       <div className="h-[50vw] flex flex-row justify-center align-middle">
         <div className="w-[50%] flex flex-col justify-center align-middle">
@@ -27,7 +34,8 @@ function Training() {
             every single educator needs to focus on, and come together as a team
             to take it to the next level.
           </p>
-          <a className="pt-[3vw] pl-[10vw]">
+          
+          <Link to="/training/form" className="pt-[3vw] pl-[10vw]">
             <div className="rounded-2xl w-[15vw] h-[5vw] bg-[#16194F] text-white text-[1.1vw] flex flex-col justify-center align-middle text-center">
               Contact Us {"\u00A0 \u00A0"}
               <svg
@@ -41,7 +49,7 @@ function Training() {
                 <polyline stroke="red" points="12 5 19 12 12 19" />
               </svg>
             </div>
-          </a>
+          </Link>
         </div>
         <div className="w-[50%] flex flex-col justify-center align-middle">
           <img
@@ -150,7 +158,7 @@ function Training() {
             you do this as an offsite experience for maximum learning and
             takeaway. Get this experience into your annual calendar!
           </p>
-          <a className="pt-[3vw] pl-[15vw]">
+          <Link to="/training/form" className="pt-[3vw] pl-[15vw]">
             <div className="rounded-2xl w-[15vw] h-[5vw] bg-[#16194F] text-white text-[1.1vw] flex flex-col justify-center align-middle text-center">
               Contact Us {"\u00A0 \u00A0"}
               <svg
@@ -164,7 +172,7 @@ function Training() {
                 <polyline stroke="red" points="12 5 19 12 12 19" />
               </svg>
             </div>
-          </a>
+          </Link>
         </div>
         <div className="w-[50%] flex flex-col justify-center align-middle">
           <img

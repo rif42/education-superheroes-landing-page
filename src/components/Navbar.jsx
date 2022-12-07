@@ -8,7 +8,7 @@ function Navbar() {
                 <a className='flex flex-col justify-center align-middle pr-[7vw]'>
                     <img className='w-[10vw]' src={"/assets/ES_logo.png"} alt={"logo education superheroes"} />
                 </a>
-                <Link to={"/"} className='flex flex-col justify-center align-middle text-white text-[1.2vw]'>
+                <Link to={"/home"} className='flex flex-col justify-center align-middle text-white text-[1.2vw]'>
                     <div>Home</div>
                 </Link>
                 <Link to={"/training"} className='flex flex-col justify-center align-middle text-white text-[1.2vw]'>

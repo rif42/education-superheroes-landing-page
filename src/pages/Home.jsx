@@ -1,8 +1,10 @@
 import React from "react";
+import { Outlet, Link } from "react-router-dom";
 
 function Home() {
   return (
     <div className="w-[99%] h-fit Home">
+      <Outlet />
       <div className=" h-[70vw] flex flex-row justify-center bg-home0 bg-no-repeat bg-center bg-cover">
         <div className="w-[50%] h-full flex flex-col justify-center align-middle text-left pl-[15vw]">
           <h1 className="text-[5vw] font-bold text-white">Let's Live!</h1>
@@ -16,7 +18,7 @@ function Home() {
             <b>LEARNING</b>
             is about? <b>LEARNING IS LIVING. So Let’s Live!</b>
           </p>
-          <a className="pt-[3vw] ">
+          <Link to="/training" className="pt-[3vw] ">
             <div className="rounded-2xl w-[20vw] h-[5vw] bg-[#16194F] text-white text-[1.1vw] flex flex-col justify-center align-middle text-center">
               Teacher's Training Program {"\u00A0 \u00A0"}
               <svg
@@ -30,7 +32,7 @@ function Home() {
                 <polyline stroke="red" points="12 5 19 12 12 19" />
               </svg>
             </div>
-          </a>
+          </Link>
         </div>
         <div className="w-[50%] h-full flex flex-col justify-center align-middle text-center">
           <img
@@ -96,7 +98,7 @@ function Home() {
             What our young students need from us is for us to live our best
             life! To be the best version of ourselves! To be happy!
           </p>
-          <a className="pt-[3vw] ">
+          <Link to="/home/form" className="pt-[3vw] ">
             <div className="rounded-2xl w-[15vw] h-[5vw] bg-[#16194F] text-white text-[1.1vw] flex flex-col justify-center align-middle text-center">
               Learn More {"\u00A0 \u00A0"}
               <svg
@@ -110,7 +112,7 @@ function Home() {
                 <polyline stroke="red" points="12 5 19 12 12 19" />
               </svg>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -141,7 +143,7 @@ function Home() {
         <h2 className="text-[3vw] font-bold tracking-tight leading-tight text-[#554DDE] text-center">
           You just have to unlearn and let go of a lot of old practices.
         </h2>
-        <a className="pt-[3vw] place-self-center">
+        <Link to="/home/form" className="pt-[3vw] place-self-center">
           <div className="rounded-2xl w-[15vw] h-[5vw] bg-[#16194F] text-white text-[1.1vw] flex flex-col justify-center align-middle text-center">
             Learn More {"\u00A0 \u00A0"}
             <svg
@@ -155,7 +157,7 @@ function Home() {
               <polyline stroke="red" points="12 5 19 12 12 19" />
             </svg>
           </div>
-        </a>
+        </Link>
       </div>
     </div>
   );
