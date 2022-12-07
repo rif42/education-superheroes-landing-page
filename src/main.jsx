@@ -10,25 +10,29 @@ import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 
 const router = createBrowserRouter([
     {
-        path: "/home",
+        path: "/home/",
         element: <App />,
         errorElement: <ErrorPage />,
         children: [{
-            path: "/home/form",
+            path: "/home/form/",
             element: <Form />
         }]
     },
     {
-        path: "/training",
+        path: "/training/",
         element: <Training />,
         children: [{
-            path: "/training/form",
+            path: "/training/form/",
             element: <Form />
         }]
     },
     {
-        path: "/our_team",
+        path: "/our_team/",
         element: <OurTeam />,
+        children: [{
+            path: "/our_team/form/",
+            element: <Form />
+        }]
     },
 ]);
 

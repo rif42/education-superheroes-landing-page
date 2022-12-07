@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 function Navbar() {
+    let urltest = useLocation().pathname;
     return (
         <div className='w-full absolute h-[8vw]'>
             <div className='h-full flex flex-row justify-evenly align-middle px-[5vw] '>
@@ -17,12 +18,13 @@ function Navbar() {
                 <Link to={"/our_team"} className='flex flex-col justify-center align-middle text-white text-[1.2vw]'>
                     <div>Our Team</div>
                 </Link>
-                <a className='flex flex-col justify-center align-middle text-white pl-[5vw] text-[1.2vw] '>
+                <Link to={`${urltest}/form`} className='flex flex-col justify-center align-middle text-white pl-[5vw] text-[1.2vw] '>
                     <div className='w-[12vw] bg-red-400 h-[3vw] rounded-full text-center flex flex-col justify-center cursor-pointer'>
                         Contact Us
                     </div>
-                </a>
+                </Link>
             </div>
+            <Outlet/>
         </div>
     );
 }
