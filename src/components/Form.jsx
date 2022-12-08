@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -12,10 +12,73 @@ function Form() {
   const [email, setEmail] = useState("");
   const [input, setInput] = useState("");
 
-  let checkingchildname;
-  let checkingparentsname;
-  let checkingchildage;
-  let checkemail;
+  function handlename(e) {
+    let checkname = e.target.value;
+    if (checkname.length < 4) {
+      e.target.value = "";
+      e.target.style.border = "2px solid red";
+      errmsg("Name must be at least 4 characters long");
+    } //else if check if all numbers
+    else if (checkname.match(/^[0-9]+$/)) {
+      e.target.value = "";
+      e.target.style.border = "2px solid red";
+      errmsg("Name can't contain numbers");
+    } else {
+      setChildname(checkname);
+      e.target.style.border = "2px solid green";
+    }
+  }
+
+  function handlesch(e) {
+    let checksch = e.target.value;
+    if (checksch.length == 0) {
+      e.target.value = "";
+      e.target.style.border = "2px solid red";
+      if (typeof e === "string") {
+        errmsg("Please enter a valid option");
+      } else if (typeof e === "number") {
+        errmsg("Please enter a valid number");
+      }
+    } else {
+      setChildname(checksch);
+      e.target.style.border = "2px solid green";
+    }
+  }
+
+  function handleage(e) {
+    let checkage = e.target.value;
+    if (0 < checkage < 99) {
+      setChildname(checkage);
+      e.target.style.border = "2px solid green";
+      
+    } else {
+      e.target.value = "";
+      e.target.style.border = "2px solid red";
+      errmsg("Please enter a valid number");
+      
+    }
+  }
+
+  function handlemail(e) {
+    let checkmail = e.target.value;
+    if (checkmail.match(/^([a-z0-9_\.\+-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)) {
+      setChildname(checkmail);
+      e.target.style.border = "2px solid green";
+    } else {
+      e.target.value = "";
+      e.target.style.border = "2px solid red";
+      errmsg("Please enter a valid email");
+    }
+  }
+
+  function errmsg(text) {
+    Swal.fire({
+      title: "Error!",
+      text: text,
+      icon: "error",
+      confirmButtonText: "OK!",
+    });
+  }
 
   function handleSubmit(e) {
     // alert('You`re connected! We will contact you!');
@@ -40,7 +103,9 @@ function Form() {
           <div
             id="registration"
             className="w-[85vw] h-[45vw] place-self-center  flex flex-row justify-center align-middle bg-white">
-            <Link to={url.slice(0,-5)} className="absolute place-self-start mt-[1vw] ml-[80vw]">
+            <Link
+              to={url.slice(0, -5)}
+              className="absolute place-self-start mt-[1vw] ml-[80vw]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -66,187 +131,85 @@ function Form() {
             <div className="w-[33%] h-[100%] flex flex-col justify-center align-middle ">
               <label
                 htmlFor="childname"
-                className="font-montserrat text-[0.9vw] visited:text-[0.9vw] text-black place-self-start pl-[3.1vw] pb-[1vw]">
+                className=" text-[0.9vw] visited:text-[0.9vw] text-black place-self-start pl-[3.1vw] pb-[1vw]">
                 Name of Children
               </label>
               <input
-                onBlur={() => {
-                  checkingchildname =
-                    document.getElementById("childname").value;
-                  if (checkingchildname.length < 4) {
-                    document.getElementById("childname").value = "";
-                    document.getElementById("childname").style.border =
-                      "2px solid red";
-                    document.getElementById("name-error").innerHTML =
-                      "Name can't be less than 4 characters";
-                  } //else if check if all numbers
-                  else if (checkingchildname.match(/^[0-9]+$/)) {
-                    document.getElementById("childname").value = "";
-                    document.getElementById("childname").style.border =
-                      "2px solid red";
-                    document.getElementById("name-error").innerHTML =
-                      "Name can't number";
-                  } else {
-                    setChildname(checkingchildname);
-                    document.getElementById("name-error").innerHTML = "";
-                    document.getElementById("childname").style.border =
-                      "2px solid #00FF0A";
-                  }
+                onBlur={(e) => {
+                  handlename(e);
                 }}
                 id="childname"
                 name="child_name"
                 placeholder="Type your name"
-                className="flex flex-col justify-center w-[80%] h-[2.5vw] border-[0.1vw] border-gray-500 align-middle rounded-md px-[0.5vw] text-[0.9vw] self-center text-left font-montserrat py-[0.5vw]"
+                className="flex flex-col justify-center w-[80%] h-[2.5vw] border-[0.1vw] border-gray-500 align-middle rounded-md px-[0.5vw] text-[0.9vw] self-center text-left  py-[0.5vw]"
                 required
               />
-              <p
-                class="text-red-500 text-xs italic font-montserrat text-[0.9vw] text-black place-self-start pl-[3.1vw] pb-[1vw]"
-                id="name-error"></p>
+
               <label
                 htmlFor="schoolname"
-                className="font-montserrat text-[0.9vw] visited:text-[0.9vw] text-black place-self-start pl-[3.1vw] pt-[2vw] pb-[1vw]">
+                className=" text-[0.9vw] visited:text-[0.9vw] text-black place-self-start pl-[3.1vw] pt-[2vw] pb-[1vw]">
                 School & Grade
               </label>
               <input
-                onBlur={() => {
-                  if (
-                    document.getElementById("schoolname").value.length === 0
-                  ) {
-                    document.getElementById("schoolname").style.border =
-                      "2px solid red";
-                    document.getElementById("school-error").innerHTML =
-                      "Enter valid school";
-                  } else {
-                    document.getElementById("schoolname").style.border =
-                      "2px solid #00FF0A";
-                    document.getElementById("school-error").innerHTML = "";
-                    setSchoolname(document.getElementById("schoolname"));
-                  }
-                }}
+                onBlur={(e) => handlesch(e)}
                 id="schoolname"
                 name="child_school"
                 placeholder="Type your School name"
-                className="flex flex-col justify-center w-[80%] h-[2.5vw] border-[0.1vw] border-gray-500 align-middle rounded-md px-[0.5vw] text-[0.9vw] self-center text-left font-montserrat py-[0.5vw]"
+                className="flex flex-col justify-center w-[80%] h-[2.5vw] border-[0.1vw] border-gray-500 align-middle rounded-md px-[0.5vw] text-[0.9vw] self-center text-left  py-[0.5vw]"
                 required
               />
-              <p
-                class="text-red-500 text-xs italic font-montserrat text-[0.9vw] text-black place-self-start pl-[3.1vw] pb-[1vw]"
-                id="school-error"></p>
+
               <label
                 htmlFor="pnumber"
-                className="font-montserrat text-[0.9vw] visited:text-[0.9vw] text-black text-left place-self-start pl-[3.1vw] pt-[2vw] pb-[1vw]">
+                className=" text-[0.9vw] visited:text-[0.9vw] text-black text-left place-self-start pl-[3.1vw] pt-[2vw] pb-[1vw]">
                 Mobile Number of Corresponding Parent
               </label>
               <input
-                onBlur={() => {
-                  if (document.getElementById("pnumber").value.length === 0) {
-                    document.getElementById("pnumber").style.border =
-                      "2px solid red";
-                  } else {
-                    document.getElementById("pnumber").style.border =
-                      "2px solid #00FF0A";
-                    setPnumber(document.getElementById("pnumber"));
-                  }
-                }}
+                onBlur={(e) => handlesch(e)} // also works for checking numbers
                 id="pnumber"
                 type="number"
                 name="parent_contact"
                 placeholder="65XXXXXX"
-                className="flex flex-col justify-center w-[80%] h-[2.5vw] border-[0.1vw] border-gray-500 align-middle rounded-md px-[0.5vw] text-[0.9vw] self-center text-left font-montserrat py-[0.5vw]"
+                className="flex flex-col justify-center w-[80%] h-[2.5vw] border-[0.1vw] border-gray-500 align-middle rounded-md px-[0.5vw] text-[0.9vw] self-center text-left  py-[0.5vw]"
                 required
               />
               <label
                 htmlFor="parentsname"
-                className="font-montserrat text-[0.9vw] visited:text-[0.9vw] text-black place-self-start pl-[3.1vw] pt-[2vw] pb-[1vw]">
+                className=" text-[0.9vw] visited:text-[0.9vw] text-black place-self-start pl-[3.1vw] pt-[2vw] pb-[1vw]">
                 Parents Name
               </label>
               <input
-                onBlur={() => {
-                  checkingparentsname =
-                    document.getElementById("parentsname").value;
-                  if (checkingparentsname.length < 4) {
-                    document.getElementById("parentsname").value = "";
-                    document.getElementById("parentsname").style.border =
-                      "2px solid red";
-                    document.getElementById("parent-name-error").innerHTML =
-                      "Name can't be less than 4 characters";
-                  } //else if check if all numbers
-                  else if (checkingparentsname.match(/^[0-9]+$/)) {
-                    document.getElementById("parentsname").value = "";
-                    document.getElementById("parentsname").style.border =
-                      "2px solid red";
-                    document.getElementById("parent-name-error").innerHTML =
-                      "Name can't be numbers";
-                  } else {
-                    setParentsname(checkingparentsname);
-                    document.getElementById("parentsname").style.border =
-                      "2px solid #00FF0A";
-                    document.getElementById("parent-name-error").innerHTML = "";
-                  }
-                }}
+                onBlur={(e) => handlename(e)}
                 id="parentsname"
                 name="parent_name"
                 placeholder="Type your Parents name"
-                className="flex flex-col justify-center w-[80%] h-[2.5vw] border-[0.1vw] border-gray-500 align-middle rounded-md px-[0.5vw] text-[0.9vw] self-center text-left font-montserrat py-[0.5vw]"
+                className="flex flex-col justify-center w-[80%] h-[2.5vw] border-[0.1vw] border-gray-500 align-middle rounded-md px-[0.5vw] text-[0.9vw] self-center text-left  py-[0.5vw]"
                 required
               />
-              <p
-                class="text-red-500 text-xs italic font-montserrat text-[0.9vw] text-black place-self-start pl-[3.1vw] pb-[1vw]"
-                id="parent-name-error"></p>
             </div>
             <div className="w-[33%] h-[100%] flex flex-col justify-center align-middle ">
               <label
                 htmlFor="childrenage"
-                className="font-montserrat text-[0.9vw] text-black place-self-start pl-[3.1vw] pb-[1vw]">
+                className=" text-[0.9vw] text-black place-self-start pl-[3.1vw] pb-[1vw]">
                 Age of Children
               </label>
               <input
-                onBlur={() => {
-                  checkingchildage =
-                    document.getElementById("childrenage").value;
-                  if (0 < checkingchildage < 99) {
-                    document.getElementById("childrenage").style.border =
-                      "2px solid #00FF0A";
-                    setChildrenage(checkingchildage);
-                    document.getElementById("age-error").innerHTML = "";
-                  } else {
-                    document.getElementById("childrenage").value = "";
-                    document.getElementById("childrenage").style.border =
-                      "2px solid red";
-                    document.getElementById("age-error").innerHTML =
-                      "Please input a valid number";
-                  }
-                }}
+                onBlur={(e) => handleage(e)}
                 id="childrenage"
                 type="number"
                 name="child_age"
                 placeholder="Type your children's age"
-                className="flex flex-col justify-center w-[80%] h-[2.5vw] border-[0.1vw] border-gray-500 align-middle rounded-md px-[0.5vw] text-[0.9vw] self-center text-left font-montserrat py-[0.5vw]"
+                className="flex flex-col justify-center w-[80%] h-[2.5vw] border-[0.1vw] border-gray-500 align-middle rounded-md px-[0.5vw] text-[0.9vw] self-center text-left  py-[0.5vw]"
                 required
               />
-              <p
-                class="text-red-500 text-xs italic font-montserrat text-[0.9vw] text-black place-self-start pl-[3.1vw] pb-[1vw]"
-                id="age-error"></p>
               <label
                 htmlFor="country"
-                className="font-montserrat text-[0.9vw] text-black place-self-start pl-[3.1vw] pt-[2vw] pb-[1vw]">
+                className=" text-[0.9vw] text-black place-self-start pl-[3.1vw] pt-[2vw] pb-[1vw]">
                 Country
               </label>
               <select
-                onBlur={() => {
-                  if (document.getElementById("country").value.length === 0) {
-                    document.getElementById("country").style.border =
-                      "2px solid red";
-                    document.getElementById("country-error").innerHTML =
-                      "Choose valid country!";
-                  } else {
-                    document.getElementById("country").style.border =
-                      "2px solid #00FF0A";
-                    setCountry(document.getElementById("country"));
-                    document.getElementById("country-error").innerHTML = "";
-                  }
-                }}
-                className="flex flex-col justify-center w-[80%] h-[2.5vw] border-[0.1vw] border-gray-500 align-middle rounded-md px-[0.5vw] text-[0.9vw] self-center text-left font-montserrat py-[0.5vw]"
+                onBlur={(e) => handlesch(e)}
+                className="flex flex-col justify-center w-[80%] h-[2.5vw] border-[0.1vw] border-gray-500 align-middle rounded-md px-[0.5vw] text-[0.9vw] self-center text-left  py-[0.5vw]"
                 id="country"
                 name="country"
                 placeholder="Select Your Country"
@@ -563,60 +526,32 @@ function Form() {
                 <option value="Zambia">Zambia</option>
                 <option value="Zimbabwe">Zimbabwe</option>
               </select>
-              <p
-                class="text-red-500 text-xs italic font-montserrat text-[0.9vw] text-black place-self-start pl-[3.1vw] pb-[1vw]"
-                id="country-error"></p>
               <label
                 htmlFor="email"
-                className="font-montserrat text-[0.9vw] text-black place-self-start pl-[3.1vw] pt-[2vw] pb-[1vw]">
+                className=" text-[0.9vw] text-black place-self-start pl-[3.1vw] pt-[2vw] pb-[1vw]">
                 Email of Corresponding Parent
               </label>
               <input
-                onBlur={() => {
-                  checkemail = document.getElementById("email").value;
-                  if (
-                    checkemail.match(
-                      /^([a-z0-9_\.\+-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
-                    )
-                  ) {
-                    setEmail(checkemail);
-                    document.getElementById("email").style.border =
-                      "2px solid #00FF0A";
-                    document.getElementById("email-error").innerHTML = "";
-                  } else {
-                    document.getElementById("email").style.border =
-                      "2px solid red";
-                    document.getElementById("email-error").innerHTML =
-                      "Please enter an email address";
-                  }
-                }}
+                onBlur={(e) => handlemail(e)}
                 id="email"
                 type="email"
                 name="parent_email"
                 placeholder="Parents@email.com"
-                className="flex flex-col justify-center w-[80%] h-[2.5vw] border-[0.1vw] border-gray-500 align-middle rounded-md px-[0.5vw] text-[0.9vw] self-center text-left font-montserrat py-[0.5vw]"
+                className="flex flex-col justify-center w-[80%] h-[2.5vw] border-[0.1vw] border-gray-500 align-middle rounded-md px-[0.5vw] text-[0.9vw] self-center text-left  py-[0.5vw]"
                 required
               />
-              <p
-                class="text-red-500 text-xs italic font-montserrat text-[0.9vw] text-black place-self-start pl-[3.1vw] pb-[1vw]"
-                id="email-error"></p>
               <label
                 htmlFor="input"
-                className="font-montserrat text-[0.9vw] text-black text-left place-self-start pl-[3.1vw]">
+                className=" text-[0.9vw] text-black text-left place-self-start pl-[3.1vw]">
                 Any additional information or concerns you have for your
                 children and how you feel the next level coaches can help
               </label>
               <textarea
-                onBlur={() => {
-                  document.getElementById("input").style.border =
-                    "2px solid #00FF0A";
-                  setInput(document.getElementById("input"));
-                }}
                 id="input"
                 type="text"
                 name="msg"
                 placeholder="Hello, I want to connect with the coaches about..."
-                className="flex flex-col justify-center w-[80%] h-[5vw] border-[0.1vw] border-gray-500 align-middle rounded-md px-[0.5vw] text-[0.9vw] self-center text-left font-montserrat py-[0.5vw]"></textarea>
+                className="flex flex-col justify-center w-[80%] h-[5vw] border-[0.1vw] border-gray-500 align-middle rounded-md px-[0.5vw] text-[0.9vw] self-center text-left  py-[0.5vw]"></textarea>
             </div>
             <div className="hover:cursor-pointer absolute place-self-center place-items-center rounded-full mt-[37vw] ml-[30vw] px-[5vw] py-[0.5vw] bg-[#05194A] text-white text-[1.1vw]">
               <button type="submit">Register</button>

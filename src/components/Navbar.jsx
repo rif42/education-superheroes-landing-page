@@ -3,6 +3,7 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 
 function Navbar() {
     let urltest = useLocation().pathname;
+    let url2 = urltest.concat(urltest.slice(-1) == "/" ? "" : "/")
     return (
         <div className='w-full absolute h-[8vw]'>
             <div className='h-full flex flex-row justify-evenly align-middle px-[5vw] '>
@@ -18,7 +19,7 @@ function Navbar() {
                 <Link to={"/our_team"} className='flex flex-col justify-center align-middle text-white text-[1.2vw]'>
                     <div>Our Team</div>
                 </Link>
-                <Link to={`${urltest}/form`} className='flex flex-col justify-center align-middle text-white pl-[5vw] text-[1.2vw] '>
+                <Link to={`${url2}form`} className='flex flex-col justify-center align-middle text-white pl-[5vw] text-[1.2vw] '>
                     <div className='w-[12vw] bg-red-400 h-[3vw] rounded-full text-center flex flex-col justify-center cursor-pointer'>
                         Contact Us
                     </div>
