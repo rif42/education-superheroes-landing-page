@@ -34,35 +34,70 @@ function Form() {
     if (checksch.length == 0) {
       e.target.value = "";
       e.target.style.border = "2px solid red";
-      if (typeof e === "string") {
-        errmsg("Please enter a valid option");
-      } else if (typeof e === "number") {
-        errmsg("Please enter a valid number");
-      }
+      errmsg("Please enter a valid school name");
     } else {
-      setChildname(checksch);
+      setSchoolname(checksch);
+      e.target.style.border = "2px solid green";
+    }
+  }
+
+  function handlepnumber(e) {
+    let checkpnumber = e.target.value;
+    if (checkpnumber.length == 0) {
+      e.target.value = "";
+      e.target.style.border = "2px solid red";
+      errmsg("Please enter a valid number");
+    } else {
+      setPnumber(checkpnumber);
+      e.target.style.border = "2px solid green";
+    }
+  }
+
+  function handlepname(e) {
+    let checkpname = e.target.value;
+    if (checkpname.length < 4) {
+      e.target.value = "";
+      e.target.style.border = "2px solid red";
+      errmsg("Name must be at least 4 characters long");
+    } //else if check if all numbers
+    else if (checkpname.match(/^[0-9]+$/)) {
+      e.target.value = "";
+      e.target.style.border = "2px solid red";
+      errmsg("Name can't contain numbers");
+    } else {
+      setParentsname(checkpname);
       e.target.style.border = "2px solid green";
     }
   }
 
   function handleage(e) {
-    let checkage = e.target.value;
-    if (0 < checkage < 99) {
-      setChildname(checkage);
+    let checkage = Number(e.target.value);
+    if ( checkage < 30) {
+      setChildrenage(checkage);
       e.target.style.border = "2px solid green";
-      
-    } else {
+    } else if (checkage > 31){
       e.target.value = "";
       e.target.style.border = "2px solid red";
       errmsg("Please enter a valid number");
-      
+    }
+  }
+
+  function handlecountry(e) {
+    let checkcountry = e.target.value;
+    if (checkcountry.length == 0) {
+      e.target.value = "";
+      e.target.style.border = "2px solid red";
+      errmsg("Please enter a valid country");
+    } else {
+      setCountry(checkcountry);
+      e.target.style.border = "2px solid green";
     }
   }
 
   function handlemail(e) {
     let checkmail = e.target.value;
     if (checkmail.match(/^([a-z0-9_\.\+-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)) {
-      setChildname(checkmail);
+      setEmail(checkmail);
       e.target.style.border = "2px solid green";
     } else {
       e.target.value = "";
@@ -104,7 +139,8 @@ function Form() {
             id="registration"
             className="w-[85vw] h-[45vw] place-self-center  flex flex-row justify-center align-middle bg-white">
             <Link
-              to={url.slice(0, -5)}
+            onClick={console.log(url)}
+              to={url.slice(0, -4)}
               className="absolute place-self-start mt-[1vw] ml-[80vw]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -165,7 +201,7 @@ function Form() {
                 Mobile Number of Corresponding Parent
               </label>
               <input
-                onBlur={(e) => handlesch(e)} // also works for checking numbers
+                onBlur={(e) => handlepnumber(e)} // also works for checking numbers
                 id="pnumber"
                 type="number"
                 name="parent_contact"
@@ -179,7 +215,7 @@ function Form() {
                 Parents Name
               </label>
               <input
-                onBlur={(e) => handlename(e)}
+                onBlur={(e) => handlepname(e)}
                 id="parentsname"
                 name="parent_name"
                 placeholder="Type your Parents name"
@@ -208,7 +244,7 @@ function Form() {
                 Country
               </label>
               <select
-                onBlur={(e) => handlesch(e)}
+                onBlur={(e) => handlecountry(e)}
                 className="flex flex-col justify-center w-[80%] h-[2.5vw] border-[0.1vw] border-gray-500 align-middle rounded-md px-[0.5vw] text-[0.9vw] self-center text-left  py-[0.5vw]"
                 id="country"
                 name="country"
@@ -547,6 +583,7 @@ function Form() {
                 children and how you feel the next level coaches can help
               </label>
               <textarea
+                onBlur={(e) => setInput(e.target.value)}
                 id="input"
                 type="text"
                 name="msg"

@@ -1,9 +1,12 @@
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function Home() {
   return (
-    <div className="w-[99%] h-fit Home">
+    <>
+    <Navbar />
       <Outlet />
       <div className=" h-[70vw] flex flex-row justify-center bg-home0 bg-no-repeat bg-center bg-cover">
         <div className="w-[50%] h-full flex flex-col justify-center align-middle text-left pl-[15vw]">
@@ -159,7 +162,8 @@ function Home() {
           </div>
         </Link>
       </div>
-    </div>
+    <Footer />
+    </>
   );
 }
 
